@@ -13,7 +13,7 @@ class Main extends Component {
     }
 
     componentDidMount = () => {
-        let getUrl = 'http://localhost:8000/getDrink'
+        let getUrl = 'https://test301exam.herokuapp.com/getDrink'
         axios.get(getUrl).then(itm => {
             this.setState({
                 drinkData: itm.data,
@@ -22,7 +22,7 @@ class Main extends Component {
         })
     }
     addDrink=(data)=>{
-        axios.post('http://localhost:8000/addDrink',data)
+        axios.post('https://test301exam.herokuapp.com/addDrink',data)
     }
     
     render() {
@@ -33,7 +33,7 @@ class Main extends Component {
                         this.state.show &&
                         this.state.drinkData.map((item, idx) => {
                             return (
-                                <DrinkCard item={item} addDrink={this.addDrink}/>
+                                <DrinkCard key={idx} item={item} addDrink={this.addDrink}/>
                             )
                         })
                     }

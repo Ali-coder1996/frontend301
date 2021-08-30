@@ -18,7 +18,7 @@ class Favorite extends Component {
     }
 
     componentDidMount = () => {
-        let url = 'http://localhost:8000/getData'
+        let url = 'https://test301exam.herokuapp.com/getData'
         axios.get(url).then(item => {
             this.setState({
                 FavoriteData: item.data,
@@ -29,7 +29,7 @@ class Favorite extends Component {
     }
     delete = (index) => {
         const id = this.state.FavoriteData[index]._id
-        axios.delete(`http://localhost:8000/deleteDrink/${id}`).then(item => {
+        axios.delete(`https://test301exam.herokuapp.com/deleteDrink/${id}`).then(item => {
             this.setState({
                 FavoriteData: item.data,
                 
@@ -60,7 +60,7 @@ class Favorite extends Component {
             idDrink:e.target.idDrink.value, 
         }
         console.log(data)
-        axios.put(`http://localhost:8000/updataDrink/${id}`,data).then(item => {
+        axios.put(`https://test301exam.herokuapp.com/updataDrink/${id}`,data).then(item => {
             this.setState({
                 FavoriteData: item.data,
                 
@@ -76,7 +76,7 @@ class Favorite extends Component {
                         this.state.show &&
                         this.state.FavoriteData.map((item, idx) => {
                             return (
-                                <FavoriteCard item={item} idx={idx} showModel={this.showModel} delete={this.delete} />
+                                <FavoriteCard  key={idx} item={item} idx={idx} showModel={this.showModel} delete={this.delete} />
                             )
                         })
                     }
